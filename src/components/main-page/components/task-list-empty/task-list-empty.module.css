@@ -1,0 +1,18 @@
+.empty {
+	margin-top: 50px;
+	text-align: center;
+	color: #6b7280;
+	font-size: 1rem;
+	animation: spacing 10s infinite;
+}
+@keyframes spacing {
+	0% {
+		letter-spacing: normal;
+	}
+	50% {
+		letter-spacing: 3px;
+	}
+	100% {
+		letter-spacing: normal;
+	}
+}

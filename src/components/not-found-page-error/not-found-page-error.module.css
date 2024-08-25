@@ -1,0 +1,52 @@
+.notFoundError {
+	position: relative;
+	max-height: 90vh;
+	max-width: 100vw;
+	display: block;
+	margin: 0 auto;
+}
+
+.backButton {
+	position: absolute;
+	color: #fff;
+	font-size: 1.20rem;
+	top: 70%;
+	left: 50%;
+	width: 70px;
+	height: 25px;
+	transition: all .3s;
+	transform: translateX(-45%);
+	cursor: pointer;
+	text-align: center;
+	text-shadow:
+		0 0 1px #3bfbac,
+		0 0 3px #3bfbac,
+		0 0 10px #e843fa,
+		0 0 5px #3bfbac;
+}
+.backButton::before {
+	position: absolute;
+	content: '▼';
+	font-size: 1.25rem;
+	transform: rotate(90deg);
+	left: -12px;
+	top: 1px;
+	transition: all .3s;
+}
+
+.backButton:hover {
+	font-size: 1.21rem;
+	text-shadow:
+		0 0 1px #3bfbac,
+		0 0 3px  #219cf3,
+		0 0 10px #e843fa,
+}
+.backButton:hover::before {
+	left: -17px;
+}
+
+.backButton:active {
+	text-shadow:
+		0 0 5px #219cf3,
+		0 0 20px #219cf3;
+}

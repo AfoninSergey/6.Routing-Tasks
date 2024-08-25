@@ -1,0 +1,46 @@
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.taskItem {
+	position: relative;
+	background-color: #111827;
+	border-radius: 16px;
+	padding: 16px 30px 16px 20px;
+	color: #eeeeee;
+	font-size: 1.25rem;
+	margin-bottom: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: all 0.3s;
+}
+
+.taskItem a::before {
+	position: absolute;
+	content: '▼';
+	opacity: 0;
+	color: #eeeeee;
+	z-index: 10;
+	right: 10px;
+	top: 0px;
+	transition: all 0.3s;
+}
+.taskItem:hover {
+	font-size: 1.251rem;
+	text-shadow:
+		0 0 2px #219cf3,
+		0 0 10px #219cf3;
+}
+.taskItem a:hover::before {
+	right: 10px;
+	top: 15px;
+	opacity: 1;
+	color: #eeeeee;
+}
+.taskItem a:active::before {
+	text-shadow:
+		0 0 5px #219cf3,
+		0 0 20px #219cf3;
+}

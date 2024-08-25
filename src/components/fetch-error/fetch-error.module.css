@@ -1,0 +1,21 @@
+.error {
+	background-color: #1f2937;
+	border-radius: 16px;
+	padding: 15px;
+	margin: 15px;
+	font-size: 1.125rem;
+	text-align: center;
+	color: #ec4899;
+	animation: spacing 10s infinite;
+}
+@keyframes spacing {
+	0% {
+		letter-spacing: normal;
+	}
+	50% {
+		letter-spacing: 3px;
+	}
+	100% {
+		letter-spacing: normal;
+	}
+}

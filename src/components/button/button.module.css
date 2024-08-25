@@ -1,0 +1,47 @@
+.button {
+	color: #ec4899;
+	font-size: 1.25rem;
+	font-weight: 700;
+	background-image: linear-gradient(to right, #ec4899, #8b5cf6);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	cursor: pointer;
+	transition: 0.2s;
+}
+.button:hover {
+	opacity: 0.7;
+}
+.button:active {
+	opacity: 0.4;
+}
+.button:disabled {
+	background-image: linear-gradient(to right, #ffffff, #6b7280);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	opacity: 0.2;
+}
+.taskAddButton {
+	text-transform: uppercase;
+}
+.editButton,
+.deleteButton {
+	font-size: 1.2rem;
+	margin: 5px;
+}
+.deleteButton {
+	color: #dc143c;
+	background-image: linear-gradient(to right, #dc143c, #dc143c);
+}
+.sortButton {
+	width: 260px;
+	min-width: 150px;
+	font-size: 1.125rem;
+}
+.sortButton:hover {
+	opacity: 0.8;
+}
+.sortButton:active {
+	opacity: 0.7;
+}

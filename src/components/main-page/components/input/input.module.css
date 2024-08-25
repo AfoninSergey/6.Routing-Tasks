@@ -1,0 +1,30 @@
+.input,
+.input:-webkit-autofill {
+	flex: 1 1 0%;
+	background-color: #1f2937;
+	border-radius: 16px;
+	padding: 16px;
+	color: #eeeeee;
+	font-size: 1.25rem;
+	transition:
+		background-color,
+		5000s ease-in-out 0s;
+}
+.input::placeholder {
+	color: #7d8594;
+	opacity: 0.5;
+	transition: 0.3s;
+}
+.newTaskInput {
+	margin-right: 16px;
+}
+.searchTaskInput {
+	margin-left: 25px;
+	width: 100%;
+	min-width: 200px;
+	padding: 9px 16px;
+	font-size: 1.2rem;
+}
+.warning::placeholder {
+	color: #ff0033;
+}

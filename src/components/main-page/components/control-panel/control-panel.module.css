@@ -1,0 +1,13 @@
+.newTaskForm {
+	position: relative;
+	display: flex;
+	margin-bottom: 32px;
+}
+
+.sortAndSearchBlock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+	margin: 0 auto;
+}

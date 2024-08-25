@@ -1,0 +1,11 @@
+.taskText {
+	width: 100%;
+	color: #ec4899;
+	font-size: 1.23rem;
+	height: 80vh;
+	padding: 10px 5px;
+	text-align: center;
+}
+.taskText::placeholder {
+	color: #eeeeee;
+}

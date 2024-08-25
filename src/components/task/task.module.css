@@ -1,0 +1,40 @@
+.task {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	background-color: #111827;
+	background-color: #1f2937;
+	padding: 20px;
+	margin: 0 auto ;
+	width: 80%;
+	height: 85vh;
+	border-radius: 16px;
+	margin-bottom: 15px;
+	font-size: 1.125rem;
+}
+.task_actions {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 10px;
+}
+.backButton {
+	color: #eeeeee;
+	font-size: 1.25rem;
+	transform: rotate(90deg);
+	width: 20px;
+	height: 18px;
+	transition: all .3s;
+	cursor: pointer;
+}
+
+.backButton:hover {
+	font-size: 1.255rem;
+	text-shadow:
+		0 0 2px #219cf3,
+		0 0 10px #219cf3;
+}
+.backButton:active {
+	text-shadow:
+		0 0 5px #219cf3,
+		0 0 20px #219cf3;
+}

@@ -1,0 +1,34 @@
+.loader {
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	top: 40%;
+	left: 50%;
+	border: 15px solid #00b006;
+	border-left-color: transparent;
+	border-radius: 50%;
+	background: transparent;
+	transform: translateX(-50%);
+	animation:
+		color 4s linear infinite,
+		spiner 1.7s linear infinite;
+}
+@keyframes color {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+@keyframes spiner {
+	0% {
+		transform: translateX(-50%) rotate(0deg);
+	}
+	100% {
+		transform: translateX(-50%) rotate(360deg);
+	}
+}
+.mainPage {
+	top: 400px
+}
