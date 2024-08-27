@@ -1,28 +1,40 @@
-import { useState } from 'react';
-import {
-	Loader,
-	FetchError,
-	TaskListEmpty,
-	TaskItem,
-	Controlpanel,
-} from './components';
+import { useState, useEffect } from 'react';
+import { useStore } from '../../hooks/useStore';
+import { Loader, FetchError } from '../../components';
+import { Controlpanel, TaskListEmpty, TaskItem } from './components';
+import { readFetchTasks } from '../../api';
+
 import styles from './main-page.module.css';
 
-export const MainPage = ({
-	isloading,
-	isError,
-	taskList,
-	setIsError,
-	setTaskList,
-	isButtonDisabled,
-	setIsButtonDisabled
-}) => {
+export const MainPage = () => {
 	const [sortedAndFilteredTasklist, setSortedAndFilteredTasklist] = useState([]);
-
 	const [isFilteringEnabled, setIsFilteringEnabled] = useState(false);
 
+	const { getState, updateState } = useStore();
+	const { taskList, isloading, isError, isButtonDisabled } = getState();
+
+	const setTaskList = (newValue) => {
+		updateState('taskList', newValue);
+	};
+	const setIsLoading = (newValue) => {
+		updateState('isloading', newValue);
+	};
+	const setIsError = (newValue) => {
+		updateState('setIsError', newValue);
+	};
+	const setIsButtonDisabled = (newValue) => {
+		updateState('isButtonDisabled', newValue);
+	};
+
+	useEffect(() => {
+		readFetchTasks()
+			.then((loadedTasks) => setTaskList(loadedTasks))
+			.catch(() => setIsError(true))
+			.finally(() => setIsLoading(false));
+	}, []);
+
 	const renderContent = () => {
-		if (isloading) return <Loader className="mainPage"/>;
+		if (isloading) return <Loader className="mainPage" />;
 		if (isError) return <FetchError />;
 		if (
 			taskList.length === 0 ||

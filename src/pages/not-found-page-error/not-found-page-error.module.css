@@ -9,12 +9,12 @@
 .backButton {
 	position: absolute;
 	color: #fff;
-	font-size: 1.20rem;
+	font-size: 1.2rem;
 	top: 70%;
 	left: 50%;
 	width: 70px;
 	height: 25px;
-	transition: all .3s;
+	transition: all 0.3s;
 	transform: translateX(-45%);
 	cursor: pointer;
 	text-align: center;
@@ -31,15 +31,15 @@
 	transform: rotate(90deg);
 	left: -12px;
 	top: 1px;
-	transition: all .3s;
+	transition: all 0.3s;
 }
 
 .backButton:hover {
 	font-size: 1.21rem;
 	text-shadow:
 		0 0 1px #3bfbac,
-		0 0 3px  #219cf3,
-		0 0 10px #e843fa,
+		0 0 3px #219cf3,
+		0 0 10px #e843fa;
 }
 .backButton:hover::before {
 	left: -17px;

@@ -1,31 +1,45 @@
 import { useEffect, useState } from 'react';
+import { useStore } from '../../hooks/useStore';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Button } from '../button/button';
 import { TextArea } from './components';
+import { Button, FetchError, Loader } from '../../components';
+
 import { updateFetchTask, deleteFetchTask } from '../../api';
 import { deleteTask, updateTask } from '../../utils';
-import styles from './task.module.css';
-import { FetchError, Loader } from '../main-page/components';
 
-export const Task = ({
-	isloading,
-	taskList,
-	isError,
-	setIsError,
-	setTaskList,
-	isButtonDisabled,
-	setIsButtonDisabled,
-}) => {
+import styles from './task.module.css';
+
+export const Task = () => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [isTextAreaEmpty, setIsTextAreaEmpty] = useState(false);
 	const [newTitle, setNewTitle] = useState('');
 	const [title, setTitle] = useState('');
+
+	const { getState, updateState } = useStore();
+	const { taskList, isloading, isError, isButtonDisabled } = getState();
+
+
+	const setIsError = (value) => {
+		updateState('isError', value);
+	};
+	const setTaskList = (newValue) => {
+		updateState('taskList', newValue);
+	};
+	const setIsButtonDisabled = (value) => {
+		updateState('isButtonDisabled', value);
+	};
+	const setIsLoading = (newValue) => {
+		updateState('isloading', newValue);
+	};
+
+
 	const { id } = useParams();
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		const currentTitle = taskList?.find((task) => task.id === +id)?.title;
 		setTitle(currentTitle);
+		setIsLoading(false)
 
 		if (
 			!isloading &&
@@ -89,49 +103,44 @@ export const Task = ({
 			.catch(() => setIsError(true));
 	};
 
-	const renderContent = () => {
-		if (isloading) return <Loader />;
-		if (isError) return <FetchError />;
-		return null;
-	};
+	if (isloading) return <Loader />;
+	if (isError) return <FetchError />;
 	return (
-		renderContent() || (
-			<div className={styles.task}>
-				<Link
-					to="/"
-					title="Назад"
-					className={styles.backButton}
-					onClick={() => setIsButtonDisabled(false)}
+		<div className={styles.task}>
+			<Link
+				to="/"
+				title="Назад"
+				className={styles.backButton}
+				onClick={() => setIsButtonDisabled(false)}
+			>
+				▼
+			</Link>
+			<TextArea
+				className="taskText"
+				isEditing={isEditing}
+				readOnly={!isEditing}
+				value={newTitle}
+				placeholder={!isTextAreaEmpty ? title : ''}
+				onChange={onTitleChange}
+			/>
+			<div className={styles.task_actions}>
+				<Button
+					className="editButton"
+					type="button"
+					disabled={isButtonDisabled}
+					onClick={onTaskEdit}
 				>
-					▼
-				</Link>
-				<TextArea
-					className="taskText"
-					isEditing={isEditing}
-					readOnly={!isEditing}
-					value={newTitle}
-					placeholder={!isTextAreaEmpty ? title : ''}
-					onChange={onTitleChange}
-				/>
-				<div className={styles.task_actions}>
-					<Button
-						className="editButton"
-						type="button"
-						disabled={isButtonDisabled}
-						onClick={onTaskEdit}
-					>
-						{!isEditing ? 'Изменить' : 'Сохранить'}
-					</Button>
-					<Button
-						className="deleteButton"
-						type="button"
-						disabled={isButtonDisabled}
-						onClick={onTaskDelete}
-					>
-						Удалить
-					</Button>
-				</div>
+					{!isEditing ? 'Изменить' : 'Сохранить'}
+				</Button>
+				<Button
+					className="deleteButton"
+					type="button"
+					disabled={isButtonDisabled}
+					onClick={onTaskDelete}
+				>
+					Удалить
+				</Button>
 			</div>
-		)
+		</div>
 	);
 };

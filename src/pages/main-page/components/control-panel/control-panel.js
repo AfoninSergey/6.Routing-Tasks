@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { createFetchTask } from '../../../../api';
+
 import { createTask, sortTasks, filterTasks, debounce } from '../../../../utils';
 import { Input } from '../input/Input';
-import { Button } from '../../../button/button';
+import { Button } from '../../../../components';
 
 import styles from './control-panel.module.css';
 

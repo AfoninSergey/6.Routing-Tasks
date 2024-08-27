@@ -1,4 +1,4 @@
-const fetchServer = (method, id, title) => {
+const fetchServer = async (method, id, title) => {
 	const url =
 		id !== undefined
 			? `http://localhost:3003/todos/${id}`
@@ -20,7 +20,7 @@ const fetchServer = (method, id, title) => {
 					method,
 				};
 
-	return fetch(url, options).then((loadedJsonData) => loadedJsonData.json());
+	return await fetch(url, options).then((loadedJsonData) => loadedJsonData.json());
 };
 
 export const createFetchTask = (newTitle) => fetchServer('POST', '', newTitle.trim());
